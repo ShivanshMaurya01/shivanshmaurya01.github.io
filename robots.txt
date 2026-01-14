@@ -1,4 +1,6 @@
+# CricPulse Pro Robots.txt
 User-agent: *
 Allow: /
 
+# Sitemaps help search engines find your content faster
 Sitemap: https://shivanshmaurya01.github.io/sitemap.xml
