@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
-<head>
+<html lang="en" class="dark"> <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>CricPulse Pro | Live Global Cricket Authority</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CricPulse Pro | Live Cricket Scores & Global Match Authority</title>
+    
+    <meta name="description" content="Experience the fastest live cricket scores, ball-by-ball updates, and expert match analysis. CricPulse Pro is the ultimate destination for global cricket fans.">
     
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8781223548404955" crossorigin="anonymous"></script>
 
-    <meta name="description" content="Fastest live cricket scores, ball-by-ball updates, and expert player analytics. Built for global fans.">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
     
@@ -23,303 +23,114 @@
         }
     </script>
     <style>
-        /* Custom Marquee Animation for News Ticker */
-        @keyframes marquee {
-            0% { transform: translateX(100%); }
-            100% { transform: translateX(-100%); }
-        }
-        .animate-marquee {
-            animation: marquee 30s linear infinite;
-        }
-        /* Sticky WhatsApp Button */
-        .whatsapp-float {
-            position: fixed;
-            width: 60px;
-            height: 60px;
-            bottom: 40px;
-            right: 40px;
-            background-color: #25d366;
-            color: #FFF;
-            border-radius: 50px;
-            text-align: center;
-            font-size: 30px;
-            box-shadow: 2px 2px 3px #999;
-            z-index: 1000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: transform 0.3s ease-in-out;
-        }
-        .whatsapp-float:hover {
-            transform: scale(1.1);
-        }
+        @keyframes marquee { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
+        .animate-marquee { animation: marquee 30s linear infinite; }
+        .whatsapp-float { position: fixed; width: 60px; height: 60px; bottom: 40px; right: 40px; background-color: #25d366; color: #FFF; border-radius: 50px; text-align: center; font-size: 30px; box-shadow: 2px 4px 10px rgba(0,0,0,0.3); z-index: 1000; display: flex; align-items: center; justify-content: center; transition: transform 0.3s ease-in-out; }
+        .whatsapp-float:hover { transform: scale(1.1); }
+        /* FIX: Better text contrast for Accessibility */
+        .text-slate-500 { color: #94a3b8 !important; }
     </style>
 </head>
 <body class="bg-darkBg text-slate-100 font-sans">
-    <nav class="sticky top-0 z-50 px-6 py-4 bg-darkBg/80 backdrop-blur-md border-b border-white/5 flex justify-between items-center">
-        <div class="flex items-center gap-2">
-            <div class="w-8 h-8 bg-brand rounded-lg flex items-center justify-center text-black font-black">C</div>
-            <h1 class="text-xl font-800 tracking-tighter uppercase font-bold">Cric<span class="text-brand">Pulse</span></h1>
-        </div>
+    
+    <nav role="navigation" aria-label="Main Menu" class="sticky top-0 z-50 px-6 py-4 bg-darkBg/80 backdrop-blur-md border-b border-white/5 flex justify-between items-center">
+        <a href="/" class="flex items-center gap-2" aria-label="CricPulse Pro Home">
+            <div class="w-8 h-8 bg-brand rounded-lg flex items-center justify-center text-black font-black" aria-hidden="true">C</div>
+            <span class="text-xl font-800 tracking-tighter uppercase font-bold">Cric<span class="text-brand">Pulse</span></span>
+        </a>
         <div class="flex gap-4 items-center">
-            <span class="hidden md:block text-[10px] font-bold text-slate-500 uppercase tracking-widest">Global Status: Online</span>
+            <span class="hidden md:block text-[10px] font-bold text-slate-400 uppercase tracking-widest">Status: Online</span>
             <button class="bg-brand text-black px-4 py-2 rounded-full font-bold text-xs uppercase transition hover:scale-105">Login</button>
         </div>
     </nav>
 
-    <div class="bg-brand/10 border-b border-brand/20 py-2 overflow-hidden whitespace-nowrap">
+    <div class="bg-brand/10 border-b border-brand/20 py-2 overflow-hidden whitespace-nowrap" aria-live="off">
         <div id="news-ticker" class="inline-block animate-marquee text-[11px] font-bold uppercase tracking-widest text-brand">
-            Loading latest cricket headlines from global sources... • Stay tuned for IPL 2026 updates • CricPulse Pro Enterprise Edition • 
+            Loading latest cricket headlines... IPL 2026 updates soon... Live scoreboard active...
         </div>
     </div>
 
-    <main class="max-w-6xl mx-auto px-4 py-8">
-        <div class="mb-10 min-h-[90px] bg-white/5 border border-dashed border-white/10 rounded-2xl flex items-center justify-center overflow-hidden">
+    <main id="main-content" class="max-w-6xl mx-auto px-4 py-8">
+        
+        <section aria-label="Advertisement" class="mb-10 min-h-[90px] bg-white/5 border border-dashed border-white/10 rounded-2xl flex items-center justify-center overflow-hidden">
              <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8781223548404955" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
              <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-        </div>
+        </section>
 
-        <header class="mb-8 flex justify-between items-end">
-            <div>
-                <h2 class="text-4xl font-extrabold tracking-tight">Live Scores</h2>
-                <div class="h-1.5 w-16 bg-brand rounded-full mt-2"></div>
-            </div>
-            <a href="#" class="text-xs font-bold uppercase text-slate-400 hover:text-brand transition">View All <span class="hidden md:inline">Matches</span></a>
-        </header>
-        <div id="match-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
-            <div class="animate-pulse flex flex-col gap-4 p-6 bg-cardBg rounded-3xl">
-                <div class="h-4 w-1/2 bg-white/10 rounded"></div>
-                <div class="h-12 w-full bg-white/10 rounded"></div>
-                <div class="h-4 w-1/4 bg-white/10 rounded"></div>
-            </div>
-        </div>
+        <section aria-labelledby="live-scores-title">
+            <header class="mb-8 flex justify-between items-end">
+                <div>
+                    <h2 id="live-scores-title" class="text-4xl font-extrabold tracking-tight">Live Scores</h2>
+                    <div class="h-1.5 w-16 bg-brand rounded-full mt-2"></div>
+                </div>
+                <a href="#" class="text-xs font-bold uppercase text-slate-400 hover:text-brand transition">View All Matches</a>
+            </header>
+            <div id="match-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+                </div>
+        </section>
 
-        <section class="mb-16 bg-gradient-to-br from-brand/20 to-transparent p-8 rounded-[3rem] border border-brand/20">
+        <section aria-labelledby="poll-title" class="mb-16 bg-gradient-to-br from-brand/20 to-transparent p-8 rounded-[3rem] border border-brand/20">
             <div class="flex flex-col md:flex-row justify-between items-center gap-6 mb-8">
                 <div>
-                    <h3 class="text-3xl font-black italic uppercase tracking-tighter">Fan Pulse: Who will win?</h3>
+                    <h3 id="poll-title" class="text-3xl font-black italic uppercase tracking-tighter">Fan Pulse: Who will win?</h3>
                     <p class="text-slate-400 text-xs font-bold uppercase tracking-widest mt-1">Live Global Voting Data</p>
                 </div>
                 <div id="poll-timer" class="bg-black/40 px-4 py-2 rounded-full border border-white/10 text-brand font-mono text-sm">
                     Next Reset: 00:00:00
                 </div>
             </div>
-
             <div id="poll-container" class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="md:col-span-2 bg-darkBg p-6 rounded-3xl border border-white/5 relative overflow-hidden group">
-                    <div class="text-center py-4 text-slate-500 animate-pulse">Fetching latest poll...</div>
                 </div>
-            </div>
         </section>
 
-        <header class="mb-8 flex justify-between items-end">
-            <div>
-                <h2 class="text-4xl font-extrabold tracking-tight">Latest News</h2>
-                <div class="h-1.5 w-16 bg-white/20 rounded-full mt-2"></div>
-            </div>
-            <a href="#" class="text-xs font-bold uppercase text-slate-400 hover:text-white transition">View All <span class="hidden md:inline">News</span></a>
-        </header>
-        <div id="news-grid" class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
-            <div class="flex gap-4 p-4 bg-white/5 rounded-3xl border border-white/5 animate-pulse">
-                <div class="w-24 h-24 bg-white/10 rounded-2xl"></div>
-                <div class="flex-1 space-y-2">
-                    <div class="h-4 w-3/4 bg-white/10 rounded"></div>
-                    <div class="h-3 w-1/2 bg-white/10 rounded"></div>
-                    <div class="h-3 w-1/4 bg-white/10 rounded"></div>
+        <section aria-labelledby="news-title">
+            <header class="mb-8 flex justify-between items-end">
+                <div>
+                    <h2 id="news-title" class="text-4xl font-extrabold tracking-tight">Latest News</h2>
+                    <div class="h-1.5 w-16 bg-white/20 rounded-full mt-2"></div>
                 </div>
-            </div>
-        </div>
+            </header>
+            <div id="news-grid" class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+                </div>
+        </section>
     </main>
 
-    <footer class="bg-cardBg p-8 text-center border-t border-white/5">
+    <footer role="contentinfo" class="bg-cardBg p-8 text-center border-t border-white/5">
         <div class="flex justify-center items-center gap-2 mb-4">
-            <div class="w-6 h-6 bg-brand rounded-lg flex items-center justify-center text-black font-black text-sm">C</div>
-            <span class="text-md font-extrabold uppercase font-bold">Cric<span class="text-brand">Pulse</span> Pro</span>
+            <div class="w-6 h-6 bg-brand rounded-lg flex items-center justify-center text-black font-black text-sm" aria-hidden="true">C</div>
+            <span class="text-md font-extrabold uppercase">CricPulse Pro</span>
         </div>
         <p class="text-slate-500 text-xs mb-4">© 2026 CricPulse Pro. All Rights Reserved. Data provided by CricAPI.</p>
-        <div class="flex justify-center gap-6 text-sm">
+        <nav aria-label="Footer Navigation" class="flex justify-center gap-6 text-sm">
             <a href="privacy.html" class="text-slate-400 hover:text-brand transition">Privacy Policy</a>
-            <a href="#" class="text-slate-400 hover:text-brand transition">Terms of Service</a>
-            <a href="#" class="text-slate-400 hover:text-brand transition">Contact Us</a>
-        </div>
+            <a href="#" class="text-slate-400 hover:text-brand transition">Terms</a>
+            <a href="#" class="text-slate-400 hover:text-brand transition">Contact</a>
+        </nav>
     </footer>
 
-    <a href="https://wa.me/?text=Get the fastest live cricket scores and news on CricPulse Pro! Check out the matches here: https://shivanshmaurya01.github.io/" 
-       class="whatsapp-float" target="_blank" rel="noopener noreferrer">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-whatsapp"><path d="M16.75 3.97a7.03 7.03 0 0 0-9.87 9.87l-2.43 6.9 7.04-2.43a7.03 7.03 0 0 0 9.87-9.87Z"/></svg>
+    <a href="https://wa.me/?text=Get the fastest live cricket scores on CricPulse Pro!" 
+       class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Share on WhatsApp">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16.75 3.97a7.03 7.03 0 0 0-9.87 9.87l-2.43 6.9 7.04-2.43a7.03 7.03 0 0 0 9.87-9.87Z"/></svg>
     </a>
 
     <script type="module">
         import { SYSTEM_CONFIG } from './src/config/constants.js';
-        import { PollHelper } from './src/utils/pollLogic.js'; // Ensure this file exists
-        import { NewsEngine } from './src/api/news.js'; // Ensure this file exists
+        import { PollHelper } from './src/utils/pollLogic.js';
+        import { NewsEngine } from './src/api/news.js';
 
-        // --- Core Application Initialization ---
         async function initApp() {
             console.log("CricPulse Pro v2.0 Enterprise Initiated.");
             await fetchLiveScores();
-            await renderPolls(); // Use await to ensure polls are fetched
+            await renderPolls();
             await fetchNews();
             setInterval(fetchLiveScores, SYSTEM_CONFIG.REFRESH_INTERVAL);
-            setInterval(renderPolls, SYSTEM_CONFIG.REFRESH_INTERVAL * 5); // Polls update less frequently
+            setInterval(renderPolls, SYSTEM_CONFIG.REFRESH_INTERVAL * 5);
             setInterval(fetchNews, SYSTEM_CONFIG.REFRESH_INTERVAL * 2);
-            updatePollTimer(); // Start the timer for poll reset
-        }
-
-        // --- Live Score Fetching ---
-        async function fetchLiveScores() {
-            const grid = document.getElementById('match-grid');
-            try {
-                const res = await fetch(`https://api.cricapi.com/v1/currentMatches?apikey=${SYSTEM_CONFIG.API_KEY}`);
-                const data = await res.json();
-                
-                grid.innerHTML = data.data.slice(0, 6).map(match => `
-                    <div class="bg-cardBg border border-white/5 p-6 rounded-[2rem] hover:border-brand/30 transition-all group">
-                        <div class="flex justify-between items-center mb-6">
-                            <span class="text-[9px] font-bold text-slate-500 uppercase tracking-widest">${match.matchType}</span>
-                            <span class="text-[9px] font-black ${match.status.includes('won') ? 'text-green-500' : 'text-red-500'} uppercase">${match.status.includes('won') ? 'Result' : 'Live'}</span>
-                        </div>
-                        <div class="space-y-4 mb-4">
-                            <div class="flex justify-between font-bold text-lg"><span>${match.teams[0]}</span><span class="text-brand">${match.score?.[0]?.r || 0}/${match.score?.[0]?.w || 0}</span></div>
-                            <div class="flex justify-between font-bold text-lg"><span>${match.teams[1]}</span><span>${match.score?.[1]?.r || 0}/${match.score?.[1]?.w || 0}</span></div>
-                        </div>
-                         <p class="text-[10px] font-bold text-slate-500 uppercase pt-4 border-t border-white/5">${match.status}</p>
-                    </div>
-                `).join('');
-            } catch (e) { 
-                console.error("Failed to fetch live scores:", e); 
-                grid.innerHTML = `<p class="text-slate-500 text-center col-span-full py-8 animate-pulse">Global Scoreboard initializing...</p>`;
-            }
-        }
-
-        // --- Poll Rendering and Voting Logic ---
-        let currentPollMatchId = null;
-        let pollEndTime = Date.now() + 3 * 60 * 60 * 1000; // Poll resets every 3 hours for demo
-
-        async function renderPolls() {
-            const pollContainer = document.getElementById('poll-container');
-            try {
-                const res = await fetch(`https://api.cricapi.com/v1/currentMatches?apikey=${SYSTEM_CONFIG.API_KEY}`);
-                const data = await res.json();
-                const liveMatch = data.data.find(m => m.ms === 'live' || m.ms === 'started'); // Find a truly live or started match
-                
-                if (!liveMatch) {
-                    pollContainer.innerHTML = `<div class="md:col-span-2 bg-cardBg p-8 rounded-[2.5rem] border border-white/10 text-center text-slate-500">No active polls at the moment. Check back soon!</div>`;
-                    return;
-                }
-
-                currentPollMatchId = liveMatch.id;
-                const t1 = liveMatch.teams[0];
-                const t2 = liveMatch.teams[1];
-                
-                // Mock data for demo. In production, this would be from your Supabase/Firebase backend.
-                let v1 = parseInt(localStorage.getItem(`vote_${currentPollMatchId}_${t1}`) || '0') + Math.floor(Math.random() * 500); // Simulate other votes
-                let v2 = parseInt(localStorage.getItem(`vote_${currentPollMatchId}_${t2}`) || '0') + Math.floor(Math.random() * 500);
-                const total = v1 + v2;
-                const p1 = total > 0 ? Math.round((v1 / total) * 100) : 50;
-                const p2 = 100 - p1;
-
-                const hasUserVoted = PollHelper.checkVoteStatus(currentPollMatchId);
-
-                pollContainer.innerHTML = `
-                    <div class="md:col-span-2 bg-cardBg p-8 rounded-[2.5rem] border border-white/10 relative">
-                        <div class="text-center mb-8">
-                            <span class="text-brand font-black text-xl">${t1} <span class="text-white mx-2 italic text-sm">VS</span> ${t2}</span>
-                        </div>
-                        
-                        <div class="flex flex-col gap-6">
-                            <button ${hasUserVoted ? 'disabled' : ''} onclick="handleVote('${currentPollMatchId}', '${t1}')" class="relative w-full h-16 bg-white/5 rounded-2xl overflow-hidden border border-white/10 ${hasUserVoted ? 'cursor-not-allowed opacity-50' : 'hover:border-brand/50 transition-all group'}">
-                                <div class="absolute inset-y-0 left-0 bg-brand/20 transition-all duration-1000" style="width: ${p1}%"></div>
-                                <div class="absolute inset-0 flex justify-between items-center px-6 font-bold uppercase tracking-widest text-sm">
-                                    <span>${t1}</span>
-                                    <span>${p1}%</span>
-                                </div>
-                            </button>
-
-                            <button ${hasUserVoted ? 'disabled' : ''} onclick="handleVote('${currentPollMatchId}', '${t2}')" class="relative w-full h-16 bg-white/5 rounded-2xl overflow-hidden border border-white/10 ${hasUserVoted ? 'cursor-not-allowed opacity-50' : 'hover:border-brand/50 transition-all group'}">
-                                <div class="absolute inset-y-0 left-0 bg-white/10 transition-all duration-1000" style="width: ${p2}%"></div>
-                                <div class="absolute inset-0 flex justify-between items-center px-6 font-bold uppercase tracking-widest text-sm">
-                                    <span>${t2}</span>
-                                    <span>${p2}%</span>
-                                </div>
-                            </button>
-                        </div>
-                        
-                        <p class="text-center text-[10px] text-slate-500 mt-6 font-bold uppercase tracking-widest italic">
-                            ${total.toLocaleString()} Fans have voted. Your vote: ${hasUserVoted ? PollHelper.checkVoteStatus(currentPollMatchId) : 'None'}
-                        </p>
-                    </div>
-                `;
-            } catch (e) { 
-                console.error("Poll Load Error:", e); 
-                pollContainer.innerHTML = `<div class="md:col-span-2 bg-cardBg p-8 rounded-[2.5rem] border border-white/10 text-center text-slate-500">Failed to load poll data.</div>`;
-            }
-        }
-
-        // Global function for voting
-        window.handleVote = (matchId, team) => {
-            if (PollHelper.checkVoteStatus(matchId)) {
-                alert("You've already voted for this match!");
-                return;
-            }
-            // Increment local storage for demo, in production, send to server
-            let currentVotes = parseInt(localStorage.getItem(`vote_${matchId}_${team}`) || '0');
-            localStorage.setItem(`vote_${matchId}_${team}`, currentVotes + 1);
-            
-            PollHelper.saveVote(matchId, team); // Mark user as voted
-            alert(`Vote for ${team} recorded! Refreshing poll...`);
-            renderPolls(); // Re-render to show updated percentages and disabled buttons
-        };
-
-        function updatePollTimer() {
-            const timerElement = document.getElementById('poll-timer');
-            const interval = setInterval(() => {
-                const now = Date.now();
-                const timeLeft = pollEndTime - now;
-
-                if (timeLeft <= 0) {
-                    clearInterval(interval);
-                    timerElement.innerText = "Poll Ended!";
-                    pollEndTime = Date.now() + 3 * 60 * 60 * 1000; // Reset for next cycle
-                    renderPolls();
-                    updatePollTimer();
-                    return;
-                }
-
-                const hours = Math.floor(timeLeft / (1000 * 60 * 60));
-                const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
-
-                timerElement.innerText = `Next Reset: ${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
-            }, 1000);
-        }
-
-        // --- News Fetching (using NewsEngine from src/api/news.js) ---
-        async function fetchNews() {
-            const newsGrid = document.getElementById('news-grid');
-            const ticker = document.getElementById('news-ticker');
-            try {
-                const newsData = await NewsEngine.getLatestNews();
-                
-                ticker.innerText = newsData.map(n => n.title).join(' • ') + ' • ';
-
-                newsGrid.innerHTML = newsData.slice(0, 4).map(post => `
-                    <div class="flex gap-4 p-4 bg-white/5 rounded-3xl border border-white/5 hover:bg-white/10 transition">
-                        <img src="${post.image || 'https://via.placeholder.com/100/1e293b/FFFFFF?text=CP'}" class="w-24 h-24 rounded-2xl object-cover">
-                        <div>
-                            <h4 class="font-bold text-sm mb-2 line-clamp-2">${post.title}</h4>
-                            <p class="text-slate-500 text-[11px] mb-2">${post.pubDate}</p>
-                            <a href="${post.link}" target="_blank" rel="noopener noreferrer" class="text-brand text-[10px] font-black uppercase tracking-widest hover:underline">Read Story</a>
-                        </div>
-                    </div>
-                `).join('');
-            } catch (e) { 
-                console.error("Failed to fetch news:", e); 
-                newsGrid.innerHTML = `<p class="text-slate-500 text-center col-span-full py-8">Failed to load news. Please try again later.</p>`;
-            }
+            updatePollTimer();
         }
         
-        initApp(); // Initialize all features on load
+        // ... (Keep the rest of your JS Logic from here onwards) ...
+        initApp();
     </script>
 </body>
 </html>
