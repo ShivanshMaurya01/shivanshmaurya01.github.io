@@ -4,17 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="shortcut icon" href="favicon.ico">
+    <meta name="theme-color" content="#020617">
+
     <link rel="preconnect" href="https://cdn.tailwindcss.com">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    
-    <title>CricPulse Pro | Live Cricket Scores & Global Authority</title>
-    <meta name="description" content="Fastest live cricket scores, ball-by-ball commentary, and fan polls. Built for 1 crore fans by CricPulse Pro Raebareli.">
-    
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" as="style">
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" as="style">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
+    <title>CricPulse Pro | Live Cricket Global Authority & Analytics</title>
+    <meta name="description" content="Elite cricket analytics, live scores, and expert commentary. Built for 1 Crore fans by the CricPulse team in Raebareli.">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8781223548404955" crossorigin="anonymous"></script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SportsOrganization",
+      "name": "CricPulse Pro",
+      "url": "https://shivanshmaurya01.github.io/",
+      "logo": "https://shivanshmaurya01.github.io/android-chrome-512x512.png",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Raebareli Industrial Exchange",
+        "addressLocality": "Raebareli",
+        "postalCode": "229001",
+        "addressCountry": "IN"
+      }
+    }
+    </script>
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -22,7 +44,7 @@
             darkMode: 'class',
             theme: {
                 extend: {
-                    colors: { brand: '#00f2ff', darkBg: '#020617', cardBg: '#0f172a' },
+                    colors: { brand: '#00f2ff', darkBg: '#020617', cardBg: '#0f172a', accent: '#1e293b' },
                     fontFamily: { sans: ['Plus Jakarta Sans', 'sans-serif'] }
                 }
             }
@@ -30,135 +52,370 @@
     </script>
 
     <style>
-        /* CRITICAL CSS: Fixes CLS and Performance */
-        :root { --brand: #00f2ff; --dark: #020617; }
-        body { background-color: var(--dark); min-height: 100vh; }
-        .text-slate-500 { color: #94a3b8 !important; }
+        /* PRO UI OVERRIDES */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #020617; }
+        ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 10px; }
+        
+        .glass-nav { background: rgba(2, 6, 23, 0.85); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .hero-gradient { background: radial-gradient(circle at 50% 0%, rgba(0, 242, 255, 0.15) 0%, transparent 70%); }
+        .match-card:hover { transform: translateY(-4px); border-color: #00f2ff55; box-shadow: 0 20px 40px -15px rgba(0,242,255,0.1); }
+        .tab-active { color: #00f2ff; border-bottom: 2px solid #00f2ff; }
+        
         @keyframes marquee { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
-        .animate-marquee { animation: marquee 30s linear infinite; }
-        /* Prevent Ad Collapse */
-        .ad-container { min-height: 100px; width: 100%; display: flex; align-items: center; justify-content: center; }
-        .whatsapp-float { position: fixed; width: 60px; height: 60px; bottom: 40px; right: 40px; background: #25d366; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 50; box-shadow: 0 4px 12px rgba(0,0,0,0.4); }
+        .animate-marquee { animation: marquee 35s linear infinite; }
+        
+        .whatsapp-btn { position: fixed; bottom: 30px; right: 30px; z-index: 99; transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .whatsapp-btn:hover { transform: scale(1.1) rotate(5deg); }
     </style>
 </head>
 
-<body class="bg-darkBg text-slate-100 font-sans">
+<body class="bg-darkBg text-slate-100 font-sans selection:bg-brand selection:text-black">
 
-    <nav role="navigation" aria-label="Main Navigation" class="sticky top-0 z-50 px-6 py-4 bg-darkBg/80 backdrop-blur-md border-b border-white/5 flex justify-between items-center">
-        <a href="/" class="flex items-center gap-2" aria-label="CricPulse Home">
-            <div class="w-8 h-8 bg-brand rounded-lg flex items-center justify-center text-black font-black" aria-hidden="true">C</div>
-            <span class="text-xl font-bold tracking-tighter uppercase italic">Cric<span class="text-brand">Pulse</span></span>
-        </a>
-        <button onclick="toggleLogin()" class="bg-brand text-black px-6 py-2 rounded-full font-bold text-xs uppercase hover:scale-105 transition active:scale-95">Login</button>
+    <nav class="sticky top-0 z-[100] glass-nav px-6 py-4 flex justify-between items-center">
+        <div class="flex items-center gap-10">
+            <a href="/" class="flex items-center gap-3 group">
+                <img src="android-chrome-192x192.png" alt="CricPulse Logo" class="w-10 h-10 rounded-xl group-hover:rotate-6 transition duration-300">
+                <div class="flex flex-col">
+                    <span class="text-xl font-black tracking-tighter uppercase italic leading-none">Cric<span class="text-brand">Pulse</span></span>
+                    <span class="text-[8px] font-bold tracking-[0.3em] text-slate-500 uppercase mt-1">Industrial Authority</span>
+                </div>
+            </a>
+            <div class="hidden lg:flex items-center gap-8 text-[10px] font-black uppercase tracking-[0.2em] text-slate-400">
+                <a href="#live" class="hover:text-brand transition">Matches</a>
+                <a href="#rankings" class="hover:text-brand transition">Rankings</a>
+                <a href="#news" class="hover:text-brand transition">News Feed</a>
+                <a href="#stats" class="hover:text-brand transition">Pro Analytics</a>
+            </div>
+        </div>
+        
+        <div class="flex items-center gap-4">
+            <button onclick="toggleModal('login-modal')" class="hidden sm:block text-[10px] font-black uppercase tracking-widest text-slate-400 hover:text-white px-4">Support</button>
+            <button onclick="toggleModal('login-modal')" class="bg-brand text-black px-8 py-3 rounded-2xl font-black text-[10px] uppercase tracking-widest hover:brightness-110 shadow-lg shadow-brand/20 transition active:scale-95">Log In</button>
+        </div>
     </nav>
 
-    <div class="bg-brand/10 border-b border-brand/20 py-2 overflow-hidden whitespace-nowrap" aria-hidden="true">
-        <div class="inline-block animate-marquee text-[11px] font-bold uppercase tracking-widest text-brand">
-            Live Matches: IND vs AUS • RSA vs ENG • SL vs NZ • CricPulse Pro: Built for 1 Crore Fans in Raebareli
+    <div class="bg-brand/5 border-b border-white/5 py-2.5 overflow-hidden whitespace-nowrap">
+        <div class="inline-block animate-marquee text-[9px] font-black uppercase tracking-[0.4em] text-brand/60">
+            • LIVE: IND 342/4 (82.1) • ICC WORLD TEST CHAMPIONSHIP UPDATES • NEW PLAYER RANKINGS RELEASED • CRICPULSE PRO: RAEBARELI TECH HUB • 
         </div>
     </div>
 
-    <main class="max-w-6xl mx-auto px-4 py-8">
-        
-        <section aria-label="Advertisement" class="ad-container mb-10 bg-white/5 border border-dashed border-white/10 rounded-2xl">
-             <ins class="adsbygoogle"
-                  style="display:block; min-width:300px; min-height:100px"
-                  data-ad-client="ca-pub-8781223548404955"
-                  data-ad-slot="auto"
-                  data-ad-format="auto"
-                  data-full-width-responsive="true"></ins>
-             <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-        </section>
+    <main class="hero-gradient">
+        <div class="max-w-[1400px] mx-auto px-6 py-12">
+            
+            <section id="live" class="mb-20">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-12">
+                    <div>
+                        <h1 class="text-5xl font-black tracking-tighter uppercase italic mb-2">Match <span class="text-brand">Command</span></h1>
+                        <p class="text-slate-500 text-xs font-bold uppercase tracking-widest italic">Real-time telemetry from global stadiums</p>
+                    </div>
+                    
+                    <div class="flex gap-2 p-1.5 bg-accent/40 rounded-2xl border border-white/5">
+                        <button onclick="switchTab(this, 'all')" class="px-6 py-3 rounded-xl bg-brand text-black text-[9px] font-black uppercase tracking-widest transition">All</button>
+                        <button onclick="switchTab(this, 'International')" class="px-6 py-3 rounded-xl text-slate-400 text-[9px] font-black uppercase tracking-widest hover:text-white transition">T20I</button>
+                        <button onclick="switchTab(this, 'T20 League')" class="px-6 py-3 rounded-xl text-slate-400 text-[9px] font-black uppercase tracking-widest hover:text-white transition">Leagues</button>
+                    </div>
+                </div>
 
-        <section aria-labelledby="live-heading" class="mb-16">
-            <h2 id="live-heading" class="text-4xl font-extrabold tracking-tight mb-8">Live Scores</h2>
-            <div id="match-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div class="bg-cardBg p-6 rounded-[2rem] border border-white/5 animate-pulse h-40"></div>
-                <div class="bg-cardBg p-6 rounded-[2rem] border border-white/5 animate-pulse h-40 hidden md:block"></div>
-                <div class="bg-cardBg p-6 rounded-[2rem] border border-white/5 animate-pulse h-40 hidden lg:block"></div>
-            </div>
-        </section>
+                <div id="match-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="h-64 bg-cardBg/50 rounded-[3rem] border border-white/5 animate-pulse"></div>
+                    <div class="h-64 bg-cardBg/50 rounded-[3rem] border border-white/5 animate-pulse"></div>
+                    <div class="h-64 bg-cardBg/50 rounded-[3rem] border border-white/5 animate-pulse"></div>
+                </div>
+            </section>
 
-        <section class="mb-16 bg-gradient-to-br from-brand/20 to-transparent p-8 rounded-[3rem] border border-brand/20">
-            <h3 class="text-3xl font-black italic uppercase tracking-tighter mb-6">Fan Pulse</h3>
-            <div id="poll-container" class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <p class="text-slate-500 italic">Syncing live fan sentiment...</p>
+            <div class="w-full min-h-[120px] mb-20 bg-white/5 border border-dashed border-white/10 rounded-[3rem] flex items-center justify-center">
+                 <ins class="adsbygoogle"
+                      style="display:block; width:100%"
+                      data-ad-client="ca-pub-8781223548404955"
+                      data-ad-slot="auto"
+                      data-ad-format="auto"
+                      data-full-width-responsive="true"></ins>
+                 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
             </div>
-        </section>
+
+            <div class="grid grid-cols-1 xl:grid-cols-3 gap-12 mb-20">
+                
+                <div id="rankings" class="xl:col-span-2 bg-cardBg/40 border border-white/5 p-10 rounded-[3.5rem]">
+                    <h3 class="text-2xl font-black uppercase italic mb-8 flex items-center gap-3">
+                        <span class="w-2 h-8 bg-brand rounded-full"></span> Top Performers
+                    </h3>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left">
+                            <thead>
+                                <tr class="text-[10px] font-black text-slate-500 uppercase tracking-widest border-b border-white/5">
+                                    <th class="pb-6">Rank</th>
+                                    <th class="pb-6">Player</th>
+                                    <th class="pb-6">Team</th>
+                                    <th class="pb-6">Rating</th>
+                                    <th class="pb-6">Trend</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-sm font-bold">
+                                <tr class="border-b border-white/5 group hover:bg-white/5 transition">
+                                    <td class="py-6 text-brand">01</td>
+                                    <td class="py-6 flex items-center gap-3">
+                                        <div class="w-8 h-8 rounded-lg bg-accent"></div> Surya Kumar Yadav
+                                    </td>
+                                    <td class="py-6 text-slate-400">IND</td>
+                                    <td class="py-6">906</td>
+                                    <td class="py-6 text-green-500">▲</td>
+                                </tr>
+                                <tr class="border-b border-white/5 group hover:bg-white/5 transition">
+                                    <td class="py-6 text-slate-500">02</td>
+                                    <td class="py-6 flex items-center gap-3">
+                                        <div class="w-8 h-8 rounded-lg bg-accent"></div> Travis Head
+                                    </td>
+                                    <td class="py-6 text-slate-400">AUS</td>
+                                    <td class="py-6">841</td>
+                                    <td class="py-6 text-red-500">▼</td>
+                                </tr>
+                                <tr class="border-b border-white/5 group hover:bg-white/5 transition">
+                                    <td class="py-6 text-slate-500">03</td>
+                                    <td class="py-6 flex items-center gap-3">
+                                        <div class="w-8 h-8 rounded-lg bg-accent"></div> Phil Salt
+                                    </td>
+                                    <td class="py-6 text-slate-400">ENG</td>
+                                    <td class="py-6">802</td>
+                                    <td class="py-6 text-slate-500">▬</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="bg-gradient-to-br from-brand/20 to-accent/40 p-10 rounded-[3.5rem] border border-brand/20">
+                    <h3 class="text-2xl font-black uppercase italic mb-4">Fan Pulse</h3>
+                    <p class="text-xs text-slate-400 font-bold uppercase tracking-widest mb-10 leading-relaxed">Cast your vote on the current high-stakes matches.</p>
+                    
+                    <div class="space-y-6">
+                        <div class="group">
+                            <div class="flex justify-between text-[10px] font-black uppercase mb-3 tracking-widest">
+                                <span>India Win</span>
+                                <span class="text-brand">68%</span>
+                            </div>
+                            <div class="w-full h-3 bg-black/40 rounded-full overflow-hidden p-0.5 border border-white/5">
+                                <div class="h-full bg-brand rounded-full w-[68%]"></div>
+                            </div>
+                        </div>
+                        <div class="group">
+                            <div class="flex justify-between text-[10px] font-black uppercase mb-3 tracking-widest">
+                                <span>Australia Win</span>
+                                <span class="text-slate-500">32%</span>
+                            </div>
+                            <div class="w-full h-3 bg-black/40 rounded-full overflow-hidden p-0.5 border border-white/5">
+                                <div class="h-full bg-slate-700 rounded-full w-[32%]"></div>
+                            </div>
+                        </div>
+                        <button class="w-full mt-10 bg-white text-black py-4 rounded-2xl font-black text-[10px] uppercase tracking-[0.3em] hover:bg-brand transition">Submit Vote</button>
+                    </div>
+                </div>
+            </div>
+
+            <section id="news" class="mb-20">
+                <h3 class="text-3xl font-black uppercase italic mb-10 tracking-tighter">Market <span class="text-brand">Insights</span></h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <article class="bg-accent/30 p-8 rounded-[2.5rem] border border-white/5 hover:border-white/20 transition">
+                        <span class="text-[8px] font-black bg-brand/10 text-brand px-3 py-1 rounded-full uppercase mb-4 inline-block">Analysis</span>
+                        <h4 class="font-bold text-sm leading-snug mb-4">How Data Analytics is Transforming IPL 2026 Auction Strategies.</h4>
+                        <p class="text-[10px] text-slate-500 font-bold uppercase tracking-widest italic">15 Jan • 4 Min Read</p>
+                    </article>
+                    <article class="bg-accent/30 p-8 rounded-[2.5rem] border border-white/5 hover:border-white/20 transition">
+                        <span class="text-[8px] font-black bg-white/5 text-slate-400 px-3 py-1 rounded-full uppercase mb-4 inline-block">Exclusive</span>
+                        <h4 class="font-bold text-sm leading-snug mb-4">Raebareli Industrial Hub: The New Center for Sports Tech Development.</h4>
+                        <p class="text-[10px] text-slate-500 font-bold uppercase tracking-widest italic">14 Jan • 6 Min Read</p>
+                    </article>
+                    <article class="bg-accent/30 p-8 rounded-[2.5rem] border border-white/5 hover:border-white/20 transition">
+                        <span class="text-[8px] font-black bg-white/5 text-slate-400 px-3 py-1 rounded-full uppercase mb-4 inline-block">Report</span>
+                        <h4 class="font-bold text-sm leading-snug mb-4">Pitch Report: Why the Gabba will favor pacers this weekend.</h4>
+                        <p class="text-[10px] text-slate-500 font-bold uppercase tracking-widest italic">14 Jan • 3 Min Read</p>
+                    </article>
+                    <article class="bg-accent/30 p-8 rounded-[2.5rem] border border-white/5 hover:border-white/20 transition">
+                        <span class="text-[8px] font-black bg-brand/10 text-brand px-3 py-1 rounded-full uppercase mb-4 inline-block">Live</span>
+                        <h4 class="font-bold text-sm leading-snug mb-4">Ball-Tracking AI: Improving LBW Accuracy by 14% this Season.</h4>
+                        <p class="text-[10px] text-slate-500 font-bold uppercase tracking-widest italic">13 Jan • 5 Min Read</p>
+                    </article>
+                </div>
+            </section>
+        </div>
     </main>
 
-    <footer role="contentinfo" class="bg-cardBg p-10 text-center border-t border-white/5">
-        <p class="text-slate-500 text-[11px] mb-6">© 2026 CricPulse Pro Global. Raebareli Operations.</p>
-        <nav aria-label="Legal Links" class="flex justify-center flex-wrap gap-6 text-xs font-bold uppercase tracking-widest">
-            <a href="about.html" class="text-slate-400 hover:text-brand transition">About Us</a>
-            <a href="privacy.html" class="text-slate-400 hover:text-brand transition">Privacy Policy</a>
-            <a href="contact.html" class="text-slate-400 hover:text-brand transition">Contact Us</a>
-            <a href="sitemap.xml" class="text-slate-400 hover:text-brand transition">Sitemap</a>
-        </nav>
+    <footer class="bg-cardBg border-t border-white/5 py-20 px-6">
+        <div class="max-w-[1400px] mx-auto grid grid-cols-1 md:grid-cols-4 gap-16 mb-20">
+            <div class="md:col-span-1">
+                <div class="flex items-center gap-3 mb-8">
+                    <img src="favicon-32x32.png" alt="Icon" class="w-6 h-6">
+                    <span class="text-xl font-black tracking-tighter uppercase italic italic">Cric<span class="text-brand">Pulse</span></span>
+                </div>
+                <p class="text-xs text-slate-500 font-medium leading-loose">The premier destination for high-fidelity cricket telemetry and fan engagement. Engineered in the heart of Raebareli for 1 Crore global users.</p>
+            </div>
+            
+            <div class="space-y-6">
+                <h5 class="text-[10px] font-black uppercase tracking-[0.3em] text-white">Platform</h5>
+                <ul class="text-xs text-slate-500 font-bold space-y-4 uppercase tracking-widest">
+                    <li><a href="#" class="hover:text-brand transition">Live Matches</a></li>
+                    <li><a href="#" class="hover:text-brand transition">Tournament Feed</a></li>
+                    <li><a href="#" class="hover:text-brand transition">Player Analytics</a></li>
+                </ul>
+            </div>
+
+            <div class="space-y-6">
+                <h5 class="text-[10px] font-black uppercase tracking-[0.3em] text-white">Corporate</h5>
+                <ul class="text-xs text-slate-500 font-bold space-y-4 uppercase tracking-widest">
+                    <li><a href="about.html" class="hover:text-brand transition">Raebareli Hub</a></li>
+                    <li><a href="contact.html" class="hover:text-brand transition">Partnerships</a></li>
+                    <li><a href="privacy.html" class="hover:text-brand transition">Legal & Privacy</a></li>
+                </ul>
+            </div>
+
+            <div class="space-y-8">
+                <h5 class="text-[10px] font-black uppercase tracking-[0.3em] text-white">Newsletter</h5>
+                <div class="relative">
+                    <input type="email" placeholder="YOUR EMAIL" class="w-full bg-accent/40 border border-white/10 rounded-2xl p-4 text-[10px] font-bold outline-none focus:border-brand">
+                    <button class="absolute right-2 top-2 bg-brand text-black px-4 py-2 rounded-xl font-black text-[8px] uppercase">Join</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="max-w-[1400px] mx-auto pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
+            <p class="text-[9px] font-bold text-slate-600 uppercase tracking-[0.5em]">© 2026 CricPulse Pro. Raebareli Industrial Exchange.</p>
+            <div class="flex gap-8 text-[9px] font-bold text-slate-600 uppercase tracking-widest">
+                <a href="sitemap.xml" class="hover:text-white">Sitemap</a>
+                <a href="#">Security</a>
+                <a href="#">Terms</a>
+            </div>
+        </div>
     </footer>
 
-    <div id="login-modal" class="fixed inset-0 bg-black/90 backdrop-blur-md z-[100] hidden items-center justify-center p-4">
-        <div class="bg-cardBg border border-white/10 p-10 rounded-[3.5rem] max-w-md w-full relative scale-95 transition-transform duration-300">
-            <button onclick="toggleLogin()" class="absolute top-6 right-8 text-slate-500 hover:text-white text-xl" aria-label="Close">✕</button>
-            <div class="text-center mb-8">
-                <h2 class="text-3xl font-black uppercase tracking-tight">Sign In</h2>
-                <p class="text-slate-400 text-[10px] uppercase font-bold tracking-widest mt-2">Personalize Your Cricket Feed</p>
+    <div id="login-modal" class="fixed inset-0 bg-black/95 backdrop-blur-2xl z-[200] hidden items-center justify-center p-6">
+        <div class="bg-cardBg border border-white/10 p-12 rounded-[4rem] max-w-md w-full relative shadow-3xl overflow-hidden group">
+            <div class="absolute -top-24 -right-24 w-48 h-48 bg-brand/10 rounded-full blur-3xl"></div>
+            <button onclick="toggleModal('login-modal')" class="absolute top-10 right-10 text-slate-500 hover:text-white text-xl">✕</button>
+            
+            <div class="text-center mb-12 relative z-10">
+                <div class="w-16 h-16 bg-brand rounded-2xl flex items-center justify-center text-black font-black text-2xl mx-auto mb-6 shadow-xl shadow-brand/20">C</div>
+                <h2 class="text-4xl font-black tracking-tighter uppercase italic">Identity <span class="text-brand">Auth</span></h2>
+                <p class="text-slate-500 text-[9px] font-black uppercase tracking-[0.3em] mt-3">Access the 1 Crore User Dashboard</p>
             </div>
-            <form class="space-y-4" onsubmit="handleAuth(event)">
-                <input type="email" id="email" required placeholder="Email Address" class="w-full bg-darkBg border border-white/10 rounded-2xl p-4 text-sm outline-none focus:border-brand">
-                <input type="password" id="pass" required placeholder="Password" class="w-full bg-darkBg border border-white/10 rounded-2xl p-4 text-sm outline-none focus:border-brand">
-                <button type="submit" class="w-full bg-brand text-black font-black py-4 rounded-2xl uppercase text-xs tracking-widest shadow-lg shadow-brand/20 hover:brightness-110">Continue</button>
+            
+            <form class="space-y-5 relative z-10" onsubmit="handleProAuth(event)">
+                <div>
+                    <label class="block text-[8px] font-black text-slate-500 uppercase tracking-[0.3em] mb-2 ml-4">Authorized Email</label>
+                    <input type="email" id="pro-email" required class="w-full bg-darkBg border border-white/5 rounded-[1.5rem] p-5 text-[11px] font-bold uppercase tracking-widest outline-none focus:border-brand transition" placeholder="name@authority.com">
+                </div>
+                <div>
+                    <label class="block text-[8px] font-black text-slate-500 uppercase tracking-[0.3em] mb-2 ml-4">Secure Key</label>
+                    <input type="password" id="pro-pass" required class="w-full bg-darkBg border border-white/5 rounded-[1.5rem] p-5 text-[11px] font-bold uppercase tracking-widest outline-none focus:border-brand transition" placeholder="••••••••">
+                </div>
+                <button type="submit" class="w-full bg-brand text-black font-black py-5 rounded-[1.5rem] uppercase text-[11px] tracking-[0.4em] shadow-2xl shadow-brand/20 hover:scale-[1.02] active:scale-95 transition">Verify Account</button>
             </form>
         </div>
     </div>
 
-    <a href="https://wa.me/?text=Check out CricPulse Pro!" class="whatsapp-float" aria-label="Share on WhatsApp">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+    <a href="https://wa.me/?text=Check out the Live Analytics on CricPulse Pro!" class="whatsapp-btn" aria-label="WhatsApp Contact">
+        <div class="bg-[#25d366] p-4 rounded-full shadow-2xl">
+            <svg width="28" height="28" fill="white" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.417-.003 6.557-5.338 11.892-11.893 11.892-1.997-.001-3.951-.5-5.688-1.448l-6.305 1.652zm6.599-3.835c1.52.909 3.012 1.388 4.608 1.388 5.233 0 9.491-4.258 9.491-9.492s-4.258-9.492-9.491-9.492c-5.234 0-9.492 4.258-9.492 9.492 0 1.708.469 3.378 1.359 4.834l-.993 3.626 3.719-.976z"/></svg>
+        </div>
     </a>
 
     <script type="module">
-        // PERFORMANCE: Preload module
         import { SYSTEM_CONFIG } from './src/config/constants.js';
 
-        window.toggleLogin = function() {
-            const m = document.getElementById('login-modal');
-            m.classList.toggle('hidden');
-            m.classList.toggle('flex');
-        }
+        // 1. MODAL CONTROLLER
+        window.toggleModal = (id) => {
+            const el = document.getElementById(id);
+            if(el.classList.contains('hidden')) {
+                el.classList.remove('hidden');
+                el.classList.add('flex');
+                document.body.style.overflow = 'hidden';
+            } else {
+                el.classList.add('hidden');
+                el.classList.remove('flex');
+                document.body.style.overflow = 'auto';
+            }
+        };
 
-        window.handleAuth = function(e) {
+        // 2. TAB SWITCHER (For Performance Filters)
+        window.switchTab = (btn, filter) => {
+            const btns = btn.parentNode.querySelectorAll('button');
+            btns.forEach(b => {
+                b.classList.remove('bg-brand', 'text-black');
+                b.classList.add('text-slate-400');
+            });
+            btn.classList.add('bg-brand', 'text-black');
+            fetchLiveScores(filter);
+        };
+
+        // 3. AUTH HANDLER
+        window.handleProAuth = (e) => {
             e.preventDefault();
-            const email = document.getElementById('email').value;
-            alert(`Welcome back! Session started for ${email}`);
-            toggleLogin();
-        }
+            const email = document.getElementById('pro-email').value;
+            alert(`Access Granted: ${email}. Secure session established.`);
+            toggleModal('login-modal');
+        };
 
-        async function fetchLiveScores() {
+        // 4. DATA ENGINE (Live Scores)
+        async function fetchLiveScores(filter = 'all') {
             const grid = document.getElementById('match-grid');
             try {
                 const res = await fetch(`https://api.cricapi.com/v1/currentMatches?apikey=${SYSTEM_CONFIG.API_KEY}`);
                 const data = await res.json();
-                if(!data.data) return;
                 
-                grid.innerHTML = data.data.slice(0, 6).map(m => `
-                    <article class="bg-cardBg border border-white/5 p-6 rounded-[2rem] hover:border-brand/40 transition">
-                        <p class="text-[10px] text-slate-500 font-bold mb-4 uppercase tracking-widest">${m.matchType}</p>
-                        <div class="space-y-2 font-bold text-lg">
-                            <div class="flex justify-between items-center"><span>${m.teams[0]}</span><span class="text-brand">${m.score?.[0]?.r || 0}/${m.score?.[0]?.w || 0}</span></div>
-                            <div class="flex justify-between items-center"><span>${m.teams[1]}</span><span class="text-slate-400">${m.score?.[1]?.r || 0}/${m.score?.[1]?.w || 0}</span></div>
+                if(!data.data || data.data.length === 0) {
+                    grid.innerHTML = `<p class="col-span-full text-center text-slate-500 font-bold uppercase tracking-widest text-[10px]">No active data found. Checking backups...</p>`;
+                    return;
+                }
+
+                let matches = data.data;
+                if(filter !== 'all') {
+                    matches = matches.filter(m => m.matchType === filter);
+                }
+
+                grid.innerHTML = matches.slice(0, 6).map(m => `
+                    <article class="match-card bg-cardBg border border-white/5 p-10 rounded-[3.5rem] transition-all duration-500 group flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-center mb-10">
+                                <span class="text-[8px] font-black uppercase tracking-[0.2em] px-3 py-1 bg-white/5 rounded-full text-slate-400 group-hover:text-brand transition">${m.matchType || 'Match'}</span>
+                                <div class="flex items-center gap-1.5">
+                                    <span class="w-1.5 h-1.5 bg-brand rounded-full animate-pulse shadow-[0_0_10px_#00f2ff]"></span>
+                                    <span class="text-[8px] font-black text-brand uppercase tracking-widest italic">Live Telemetry</span>
+                                </div>
+                            </div>
+                            
+                            <div class="space-y-6">
+                                <div class="flex justify-between items-center">
+                                    <span class="font-bold text-base text-slate-200 uppercase tracking-tighter">${m.teams[0]}</span>
+                                    <span class="text-2xl font-black text-brand">${m.score?.[0]?.r || 0}/${m.score?.[0]?.w || 0}</span>
+                                </div>
+                                <div class="flex justify-between items-center">
+                                    <span class="font-bold text-base text-slate-200 uppercase tracking-tighter">${m.teams[1]}</span>
+                                    <span class="text-2xl font-black text-slate-600 group-hover:text-slate-400 transition">${m.score?.[1]?.r || 0}/${m.score?.[1]?.w || 0}</span>
+                                </div>
+                            </div>
                         </div>
-                        <p class="mt-4 text-[9px] text-slate-500 border-t border-white/5 pt-4 uppercase font-black tracking-tighter">${m.status}</p>
+
+                        <div class="mt-10 pt-8 border-t border-white/5">
+                            <p class="text-[10px] font-bold text-slate-500 uppercase tracking-widest italic leading-relaxed line-clamp-2">${m.status}</p>
+                        </div>
                     </article>
                 `).join('');
             } catch (err) {
-                console.error("API Delay: Retrying...");
+                console.error("Connection Error:", err);
+                grid.innerHTML = `<p class="col-span-full text-center text-slate-500 italic uppercase font-bold text-[9px] tracking-widest">Global Telemetry Delay. Reconnecting...</p>`;
             }
         }
 
-        // Initialize with staggered loading for better Performance score
+        // 5. INITIALIZATION
         document.addEventListener('DOMContentLoaded', () => {
-            setTimeout(fetchLiveScores, 100);
-            setInterval(fetchLiveScores, 60000);
+            // Initial load with staggered animation
+            setTimeout(() => fetchLiveScores('all'), 300);
+            
+            // Refresh every 60 seconds
+            setInterval(() => fetchLiveScores('all'), 60000);
+            
+            // Log for monitoring
+            console.log("CricPulse Pro Engine: Initialized for 1 Crore Users.");
         });
     </script>
 </body>
