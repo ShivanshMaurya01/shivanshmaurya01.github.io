@@ -1,5 +1,4 @@
 User-agent: *
 Allow: /
 
-# Sitemaps help Google find your cricket news faster
 Sitemap: https://shivanshmaurya01.github.io/sitemap.xml
