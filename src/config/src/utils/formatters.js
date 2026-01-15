@@ -1,8 +1,36 @@
-export const Formatters = {
-    formatScore: (r, w) => `${r}/${w}`,
-    getWinProb: (score1, score2) => {
-        const total = score1 + score2;
-        return total === 0 ? 50 : Math.round((score1 / total) * 100);
+/**
+ * UTILITY FUNCTIONS
+ * Reusable logic for scoring and display.
+ */
+
+export const MatchUtils = {
+    // Convert API status to user-friendly text
+    getStatusColor: (status) => {
+        if (status.includes("Live")) return "text-[#00f2ff] animate-pulse";
+        if (status.includes("Won")) return "text-green-400";
+        return "text-slate-500";
     },
-    cleanStatus: (status) => status.toUpperCase()
+
+    // Format huge numbers (e.g., 10000 -> 10k)
+    formatAudience: (num) => {
+        return new Intl.NumberFormat('en-IN', { notation: "compact" }).format(num);
+    },
+
+    // Calculate Run Rate manually if missing
+    calculateNRR: (runs, overs) => {
+        if (!overs) return "0.00";
+        return (runs / overs).toFixed(2);
+    }
+};
+
+export const DateUtils = {
+    // Format: "15 Jan • 14:00 IST"
+    getLiveTime: () => {
+        const now = new Date();
+        return now.toLocaleTimeString('en-IN', { 
+            hour: '2-digit', 
+            minute: '2-digit', 
+            timeZone: 'Asia/Kolkata' 
+        }) + " IST";
+    }
 };
