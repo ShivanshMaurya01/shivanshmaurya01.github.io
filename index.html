@@ -3,14 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CricPulse Pro | Live Cricket Scores & Global Match Authority</title>
-    <meta name="description" content="Experience the fastest live cricket scores and expert analysis. Built for 1 crore fans by the CricPulse team in Raebareli.">
     
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <title>CricPulse Pro | Live Cricket Scores & Global Authority</title>
+    <meta name="description" content="Fastest live cricket scores, ball-by-ball commentary, and fan polls. Built for 1 crore fans by CricPulse Pro Raebareli.">
+    
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" as="style">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8781223548404955" crossorigin="anonymous"></script>
 
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
-    
     <script>
         tailwind.config = {
             darkMode: 'class',
@@ -22,82 +28,98 @@
             }
         }
     </script>
+
     <style>
+        /* CRITICAL CSS: Fixes CLS and Performance */
+        :root { --brand: #00f2ff; --dark: #020617; }
+        body { background-color: var(--dark); min-height: 100vh; }
         .text-slate-500 { color: #94a3b8 !important; }
         @keyframes marquee { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
         .animate-marquee { animation: marquee 30s linear infinite; }
-        .whatsapp-float { position: fixed; width: 60px; height: 60px; bottom: 40px; right: 40px; background-color: #25d366; color: #FFF; border-radius: 50px; text-align: center; box-shadow: 2px 4px 10px rgba(0,0,0,0.3); z-index: 90; display: flex; align-items: center; justify-content: center; transition: transform 0.3s ease; }
+        /* Prevent Ad Collapse */
+        .ad-container { min-height: 100px; width: 100%; display: flex; align-items: center; justify-content: center; }
+        .whatsapp-float { position: fixed; width: 60px; height: 60px; bottom: 40px; right: 40px; background: #25d366; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 50; box-shadow: 0 4px 12px rgba(0,0,0,0.4); }
     </style>
 </head>
+
 <body class="bg-darkBg text-slate-100 font-sans">
-    
-    <nav role="navigation" aria-label="Main Menu" class="sticky top-0 z-50 px-6 py-4 bg-darkBg/80 backdrop-blur-md border-b border-white/5 flex justify-between items-center">
-        <a href="/" class="flex items-center gap-2" aria-label="CricPulse Pro Home">
+
+    <nav role="navigation" aria-label="Main Navigation" class="sticky top-0 z-50 px-6 py-4 bg-darkBg/80 backdrop-blur-md border-b border-white/5 flex justify-between items-center">
+        <a href="/" class="flex items-center gap-2" aria-label="CricPulse Home">
             <div class="w-8 h-8 bg-brand rounded-lg flex items-center justify-center text-black font-black" aria-hidden="true">C</div>
-            <span class="text-xl font-800 tracking-tighter uppercase font-bold italic">Cric<span class="text-brand">Pulse</span></span>
+            <span class="text-xl font-bold tracking-tighter uppercase italic">Cric<span class="text-brand">Pulse</span></span>
         </a>
-        <button onclick="toggleLogin()" class="bg-brand text-black px-6 py-2 rounded-full font-bold text-xs uppercase transition hover:scale-105">Login</button>
+        <button onclick="toggleLogin()" class="bg-brand text-black px-6 py-2 rounded-full font-bold text-xs uppercase hover:scale-105 transition active:scale-95">Login</button>
     </nav>
 
     <div class="bg-brand/10 border-b border-brand/20 py-2 overflow-hidden whitespace-nowrap" aria-hidden="true">
-        <div id="news-ticker" class="inline-block animate-marquee text-[11px] font-bold uppercase tracking-widest text-brand">
-            Loading latest cricket headlines... Built in Raebareli for the World... IPL 2026 updates soon...
+        <div class="inline-block animate-marquee text-[11px] font-bold uppercase tracking-widest text-brand">
+            Live Matches: IND vs AUS • RSA vs ENG • SL vs NZ • CricPulse Pro: Built for 1 Crore Fans in Raebareli
         </div>
     </div>
 
-    <main id="main-content" class="max-w-6xl mx-auto px-4 py-8">
-        <section aria-label="Advertisement" class="mb-10 min-h-[90px] bg-white/5 border border-dashed border-white/10 rounded-2xl flex items-center justify-center overflow-hidden">
-             <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8781223548404955" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <main class="max-w-6xl mx-auto px-4 py-8">
+        
+        <section aria-label="Advertisement" class="ad-container mb-10 bg-white/5 border border-dashed border-white/10 rounded-2xl">
+             <ins class="adsbygoogle"
+                  style="display:block; min-width:300px; min-height:100px"
+                  data-ad-client="ca-pub-8781223548404955"
+                  data-ad-slot="auto"
+                  data-ad-format="auto"
+                  data-full-width-responsive="true"></ins>
              <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
         </section>
 
-        <section aria-labelledby="live-heading">
+        <section aria-labelledby="live-heading" class="mb-16">
             <h2 id="live-heading" class="text-4xl font-extrabold tracking-tight mb-8">Live Scores</h2>
-            <div id="match-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
-                <div class="text-slate-500 animate-pulse">Syncing live data...</div>
+            <div id="match-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-cardBg p-6 rounded-[2rem] border border-white/5 animate-pulse h-40"></div>
+                <div class="bg-cardBg p-6 rounded-[2rem] border border-white/5 animate-pulse h-40 hidden md:block"></div>
+                <div class="bg-cardBg p-6 rounded-[2rem] border border-white/5 animate-pulse h-40 hidden lg:block"></div>
             </div>
         </section>
 
         <section class="mb-16 bg-gradient-to-br from-brand/20 to-transparent p-8 rounded-[3rem] border border-brand/20">
             <h3 class="text-3xl font-black italic uppercase tracking-tighter mb-6">Fan Pulse</h3>
             <div id="poll-container" class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                </div>
+                <p class="text-slate-500 italic">Syncing live fan sentiment...</p>
+            </div>
         </section>
     </main>
 
     <footer role="contentinfo" class="bg-cardBg p-10 text-center border-t border-white/5">
-        <p class="text-slate-500 text-[11px] mb-6">© 2026 CricPulse Pro. Raebareli, India.</p>
-        <nav aria-label="Footer Links" class="flex justify-center flex-wrap gap-6 text-xs font-bold uppercase tracking-widest">
-            <a href="about.html" class="text-slate-400 hover:text-brand">About Us</a>
-            <a href="privacy.html" class="text-slate-400 hover:text-brand">Privacy Policy</a>
-            <a href="contact.html" class="text-slate-400 hover:text-brand">Contact Us</a>
-            <a href="sitemap.xml" class="text-slate-400 hover:text-brand">Sitemap</a>
+        <p class="text-slate-500 text-[11px] mb-6">© 2026 CricPulse Pro Global. Raebareli Operations.</p>
+        <nav aria-label="Legal Links" class="flex justify-center flex-wrap gap-6 text-xs font-bold uppercase tracking-widest">
+            <a href="about.html" class="text-slate-400 hover:text-brand transition">About Us</a>
+            <a href="privacy.html" class="text-slate-400 hover:text-brand transition">Privacy Policy</a>
+            <a href="contact.html" class="text-slate-400 hover:text-brand transition">Contact Us</a>
+            <a href="sitemap.xml" class="text-slate-400 hover:text-brand transition">Sitemap</a>
         </nav>
     </footer>
 
     <div id="login-modal" class="fixed inset-0 bg-black/90 backdrop-blur-md z-[100] hidden items-center justify-center p-4">
-        <div class="bg-cardBg border border-white/10 p-10 rounded-[3rem] max-w-md w-full relative">
-            <button onclick="toggleLogin()" class="absolute top-6 right-8 text-slate-500 hover:text-white text-xl">✕</button>
+        <div class="bg-cardBg border border-white/10 p-10 rounded-[3.5rem] max-w-md w-full relative scale-95 transition-transform duration-300">
+            <button onclick="toggleLogin()" class="absolute top-6 right-8 text-slate-500 hover:text-white text-xl" aria-label="Close">✕</button>
             <div class="text-center mb-8">
                 <h2 class="text-3xl font-black uppercase tracking-tight">Sign In</h2>
-                <p class="text-slate-400 text-[10px] uppercase font-bold tracking-widest mt-2">Join 1 Crore Cricket Fans</p>
+                <p class="text-slate-400 text-[10px] uppercase font-bold tracking-widest mt-2">Personalize Your Cricket Feed</p>
             </div>
             <form class="space-y-4" onsubmit="handleAuth(event)">
                 <input type="email" id="email" required placeholder="Email Address" class="w-full bg-darkBg border border-white/10 rounded-2xl p-4 text-sm outline-none focus:border-brand">
                 <input type="password" id="pass" required placeholder="Password" class="w-full bg-darkBg border border-white/10 rounded-2xl p-4 text-sm outline-none focus:border-brand">
-                <button type="submit" class="w-full bg-brand text-black font-black py-4 rounded-2xl uppercase text-xs tracking-widest shadow-lg shadow-brand/20">Continue</button>
+                <button type="submit" class="w-full bg-brand text-black font-black py-4 rounded-2xl uppercase text-xs tracking-widest shadow-lg shadow-brand/20 hover:brightness-110">Continue</button>
             </form>
         </div>
     </div>
 
-    <a href="https://wa.me/?text=Check out CricPulse Pro!" class="whatsapp-float" aria-label="WhatsApp">
+    <a href="https://wa.me/?text=Check out CricPulse Pro!" class="whatsapp-float" aria-label="Share on WhatsApp">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
     </a>
 
     <script type="module">
+        // PERFORMANCE: Preload module
         import { SYSTEM_CONFIG } from './src/config/constants.js';
 
-        // Modal Logic
         window.toggleLogin = function() {
             const m = document.getElementById('login-modal');
             m.classList.toggle('hidden');
@@ -107,31 +129,37 @@
         window.handleAuth = function(e) {
             e.preventDefault();
             const email = document.getElementById('email').value;
-            alert(`Welcome, ${email}! Login successful.`);
+            alert(`Welcome back! Session started for ${email}`);
             toggleLogin();
         }
 
-        // Existing API Logic
         async function fetchLiveScores() {
             const grid = document.getElementById('match-grid');
             try {
                 const res = await fetch(`https://api.cricapi.com/v1/currentMatches?apikey=${SYSTEM_CONFIG.API_KEY}`);
                 const data = await res.json();
+                if(!data.data) return;
+                
                 grid.innerHTML = data.data.slice(0, 6).map(m => `
-                    <div class="bg-cardBg border border-white/5 p-6 rounded-[2rem] hover:border-brand/40 transition">
+                    <article class="bg-cardBg border border-white/5 p-6 rounded-[2rem] hover:border-brand/40 transition">
                         <p class="text-[10px] text-slate-500 font-bold mb-4 uppercase tracking-widest">${m.matchType}</p>
                         <div class="space-y-2 font-bold text-lg">
-                            <div class="flex justify-between"><span>${m.teams[0]}</span><span class="text-brand">${m.score?.[0]?.r || 0}</span></div>
-                            <div class="flex justify-between"><span>${m.teams[1]}</span><span>${m.score?.[1]?.r || 0}</span></div>
+                            <div class="flex justify-between items-center"><span>${m.teams[0]}</span><span class="text-brand">${m.score?.[0]?.r || 0}/${m.score?.[0]?.w || 0}</span></div>
+                            <div class="flex justify-between items-center"><span>${m.teams[1]}</span><span class="text-slate-400">${m.score?.[1]?.r || 0}/${m.score?.[1]?.w || 0}</span></div>
                         </div>
-                        <p class="mt-4 text-[10px] text-slate-400 border-t border-white/5 pt-4 uppercase font-bold">${m.status}</p>
-                    </div>
+                        <p class="mt-4 text-[9px] text-slate-500 border-t border-white/5 pt-4 uppercase font-black tracking-tighter">${m.status}</p>
+                    </article>
                 `).join('');
-            } catch (err) { grid.innerHTML = `<p class="text-slate-500">Connecting to API...</p>`; }
+            } catch (err) {
+                console.error("API Delay: Retrying...");
+            }
         }
 
-        fetchLiveScores();
-        setInterval(fetchLiveScores, 60000);
+        // Initialize with staggered loading for better Performance score
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(fetchLiveScores, 100);
+            setInterval(fetchLiveScores, 60000);
+        });
     </script>
 </body>
 </html>
